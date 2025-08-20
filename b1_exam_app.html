@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+   <script src="script.js" defer></script>>
+      <script src="test.js" defer></script>>
+    <title>Examen Teórico Carnet B1 - DGT España</title>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="dgt-logo">DGT</div>
+            <h1>Examen Teórico Carnet B1</h1>
+            <p>Permiso de Conducción de Coches - España</p>
+        </div>
+
+        <div id="examSelection" class="exam-selection">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Elige tu tipo de examen</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: #666;">Máximo 3 errores permitidos para aprobar</p>
+            
+            <div class="exam-grid">
+                <div class="exam-card" onclick="startExam('examen1')">
+                    <h3>🚦 Examen 1 <span class="difficulty-badge difficulty-basic">Básico</span></h3>
+                    <p>Señales de tráfico, normas de circulación y prioridad de paso. Fundamental para la seguridad vial.</p>
+                    <div class="exam-stats">
+                        <div><span>Preguntas:</span><span>30</span></div>
+                        <div><span>Tiempo:</span><span>30 minutos</span></div>
+                        <div><span>Errores máximos:</span><span>3</span></div>
+                    </div>
+                </div>
+                
+                <div class="exam-card" onclick="startExam('seguridad')">
+                    <h3>🛡️ Seguridad Vial <span class="difficulty-badge difficulty-intermediate">Intermedio</span></h3>
+                    <p>Distancias de seguridad, sistemas de retención, conducción preventiva y primeros auxilios.</p>
+                    <div class="exam-stats">
+                        <div><span>Preguntas:</span><span>30</span></div>
+                        <div><span>Tiempo:</span><span>30 minutos</span></div>
+                        <div><span>Errores máximos:</span><span>3</span></div>
+                    </div>
+                </div>
+
+                <div class="exam-card" onclick="startExam('shen')">
+                    <h3>🛡️ Test B2 shen <span class="difficulty-badge difficulty-intermediate">Intermedio</span></h3>
+                    <p>Distancias de seguridad, sistemas de retención, conducción preventiva y primeros auxilios.</p>
+                    <div class="exam-stats">
+                        <div><span>Preguntas:</span><span>30</span></div>
+                        <div><span>Tiempo:</span><span>30 minutos</span></div>
+                        <div><span>Errores máximos:</span><span>3</span></div>
+                    </div>
+                </div>
+
+                                <div class="exam-card" onclick="startExam('shen')">
+                    <h3>🛡️ Test B2 shen <span class="difficulty-badge difficulty-intermediate">Intermedio</span></h3>
+                    <p>Distancias de seguridad, sistemas de retención, conducción preventiva y primeros auxilios.</p>
+                    <div class="exam-stats">
+                        <div><span>Preguntas:</span><span>30</span></div>
+                        <div><span>Tiempo:</span><span>30 minutos</span></div>
+                        <div><span>Errores máximos:</span><span>3</span></div>
+                    </div>
+                </div>
+
+                                <div class="exam-card" onclick="startExam('shen')">
+                    <h3>🛡️ Test B2 shen <span class="difficulty-badge difficulty-intermediate">Intermedio</span></h3>
+                    <p>Distancias de seguridad, sistemas de retención, conducción preventiva y primeros auxilios.</p>
+                    <div class="exam-stats">
+                        <div><span>Preguntas:</span><span>30</span></div>
+                        <div><span>Tiempo:</span><span>30 minutos</span></div>
+                        <div><span>Errores máximos:</span><span>3</span></div>
+                    </div>
+                </div>
+                
+                <div class="exam-card" onclick="startExam('mecanica')">
+                    <h3>🔧 Mecánica y Mantenimiento <span class="difficulty-badge difficulty-advanced">Avanzado</span></h3>
+                    <p>Funcionamiento del vehículo, mantenimiento, documentación y aspectos técnicos.</p>
+                    <div class="exam-stats">
+                        <div><span>Preguntas:</span><span>30</span></div>
+                        <div><span>Tiempo:</span><span>30 minutos</span></div>
+                        <div><span>Errores máximos:</span><span>3</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="quizContainer" class="quiz-container">
+            <div class="quiz-header">
+                <div>
+                    <h2 id="examTitle">Examen DGT B1</h2>
+                    <p>Pregunta <span id="currentQuestion">1</span> de <span id="totalQuestions">30</span></p>
+                </div>
+                <div>
+                    <div id="errorIndicator" class="error-indicator safe">
+                        Errores: <span id="errorCount">0</span>/3
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+
+            <div class="question-card">
+                <div id="questionText" class="question-text"></div>
+                <div id="questionImage" class="question-image" style="display: none;"></div>
+                <div id="optionsContainer" class="options"></div>
+            </div>
+
+            <div class="navigation">
+                <button id="prevBtn" class="btn btn-secondary" onclick="previousQuestion()" disabled>◀ Anterior</button>
+                <button id="nextBtn" class="btn" onclick="nextQuestion()" disabled>Siguiente ▶</button>
+                <button id="finishBtn" class="btn" onclick="finishExam()" style="display: none;">🏁 Finalizar Examen</button>
+            </div>
+        </div>
+
+        <div id="resultsContainer" class="results">
+            <h2 id="resultTitle"></h2>
+            <div id="scoreDisplay" class="score-display"></div>
+            
+            <div class="results-grid">
+                <div class="result-stat">
+                    <h4>Respuestas Correctas</h4>
+                    <p id="correctAnswers">0</p>
+                </div>
+                <div class="result-stat">
+                    <h4>Respuestas Incorrectas</h4>
+                    <p id="incorrectAnswers">0</p>
+                </div>
+                <div class="result-stat">
+                    <h4>Porcentaje de Acierto</h4>
+                    <p id="percentage">0%</p>
+                </div>
+                <div class="result-stat">
+                    <h4>Tiempo Empleado</h4>
+                    <p id="timeSpent">0 min</p>
+                </div>
+            </div>
+
+            <div class="results-details">
+                <p id="resultMessage"></p>
+                <p id="officialMessage" style="margin-top: 15px; font-style: italic;"></p>
+            </div>
+            <button class="btn" onclick="restartExam()">🔄 Hacer Otro Examen</button>
+        </div>
+    </div>
+
+
+ 
+</body>
+</html>
